@@ -10,6 +10,10 @@
   padding-top: 30px;
 }
 
-.buttons {
+#play-again {
+  display: none;
+}
+
+#buttons {
   padding: 15px;
 }

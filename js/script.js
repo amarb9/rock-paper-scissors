@@ -4,6 +4,7 @@ let scissorsBtn = document.getElementById("scissors");
 let resultOutput = document.getElementById("result");
 let score = document.getElementById("score");
 let displayChoice = document.getElementById("display-choices");
+let playAgainBtn = document.getElementById("play-again");
 let playerChoice;
 let computerChoice;
 
@@ -37,6 +38,7 @@ rockBtn.addEventListener("click", function() {
     let computerChoice = getComputerChoice();
     result = playRound(playerChoice, computerChoice);
     scoreCounter(result);
+    displayChoices(playerChoice, computerChoice);
 });
 
 paperBtn.addEventListener("click", function() {
@@ -44,6 +46,7 @@ paperBtn.addEventListener("click", function() {
     let computerChoice = getComputerChoice();
     result = playRound(playerChoice, computerChoice);
     scoreCounter(result);
+    displayChoices(playerChoice, computerChoice);
 });
 
 scissorsBtn.addEventListener("click", function() {
@@ -51,7 +54,12 @@ scissorsBtn.addEventListener("click", function() {
     let computerChoice = getComputerChoice();
     result = playRound(playerChoice, computerChoice);
     scoreCounter(result);
+    displayChoices(playerChoice, computerChoice);
 });
+
+playAgainBtn.addEventListener("click", function() {
+    location.reload();
+})
 
 function scoreCounter(result) {
     if (result === "Player Wins!") {
@@ -62,6 +70,9 @@ function scoreCounter(result) {
         resultOutput.textContent = result
         computerWins++;
     }
+    else {
+        resultOutput.textContent = result 
+    }
     displayScore(playerWins, computerWins)
 }
 
@@ -70,12 +81,21 @@ function displayScore(playerWins, computerWins) {
 
     if (playerWins === 5) {
         score.textContent = "Player wins the game!";
+        playAgain();
     }
     else if (computerWins === 5) {
         score.textContent = "Computer wins the game!";
+        playAgain();
     }
 }
 
 function displayChoices(playerChoice, computerChoice) {
     displayChoice.textContent = `Player chose ${playerChoice} and Computer chose ${computerChoice}!`;
+}
+
+function playAgain() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+    playAgainBtn.style.display = 'block';
 }

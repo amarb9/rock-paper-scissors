@@ -63,15 +63,15 @@ playAgainBtn.addEventListener("click", function() {
 
 function scoreCounter(result) {
     if (result === "Player Wins!") {
-        resultOutput.textContent = result
+        resultOutput.textContent = `Round Winner: ${result}`
         playerWins++;
     }
     else if (result === "Computer Wins!") {
-        resultOutput.textContent = result
+        resultOutput.textContent = `Round Winner: ${result}`
         computerWins++;
     }
     else {
-        resultOutput.textContent = result 
+        resultOutput.textContent = `Round Winner: ${result}` 
     }
     displayScore(playerWins, computerWins)
 }
